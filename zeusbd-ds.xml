@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources xmlns="http://www.jboss.org/ironjacamar/schema">
+ <datasource jndi-name="java:jboss/datasources/zeusbd" enabled="true" 
+     use-java-context="true" pool-name="zeusbd">
+  <connection-url>jdbc:mysql://localhost:3306/zeusbd</connection-url>
+  <driver>mysql-connector-java-5.1.11-bin.jar</driver>
+  <pool></pool>
+  <security>
+   <user-name>root</user-name>
+   <password></password>
+  </security>
+ </datasource>
+</datasources>
