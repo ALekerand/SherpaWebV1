@@ -1,0 +1,46 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns:composite="http://java.sun.com/jsf/composite"
+	 xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/templateWebAuto.xhtml">
+	<ui:define name="content">
+	<p:wizard flowListener="#{userWizard.onFlowProcess}">
+        <p:tab id="personal" title="Caracteristique du sinistre">
+            <p:panel header="Caracteristique du sinistre">
+                
+            </p:panel>
+        </p:tab>
+ 
+        <p:tab id="address" title="Type de sinistre">
+            <p:panel header="Type de sinistre">
+                
+            </p:panel>
+        </p:tab>
+ 
+        <p:tab id="contact" title="Nature de l'évènement">
+            <p:panel header="Nature de l'évènement">
+                
+            </p:panel>
+        </p:tab>
+ 
+        <p:tab id="confirm" title="Mise en relation">
+            <p:panel header="Mise en relation">
+                <p:commandButton value="Submit" actionListener="#{userWizard.save}" update="growl" process="@this"/>
+            </p:panel>
+        </p:tab>
+    </p:wizard>
+	
+	
+	
+		
+	</ui:define>
+</ui:composition>
+</html>
+
