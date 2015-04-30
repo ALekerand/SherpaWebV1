@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template/templateWebAuto.xhtml">
+	<ui:define name="content">
+		<h1 style="text-align: center; background-color: gray; color: white;">EDITION
+			DES PIECES</h1>
+		<br />
+		<br />
+
+		<div align="center">
+			<h:form id="form" target="_blank">
+
+				<p:messages id="messages"  autoUpdate="true" closable="true" showSummary="true"/>
+
+				<table
+					style="border-style: dashed; border-width: 1px; border-color: red;">
+					<tr>
+						<td><h:panelGrid border="0" columns="3" cellpadding="6">
+								<h:outputLabel value="Entrer le numéro de quittance"/>
+								<p:inputText id="num"
+									value="" required="True" style="width:200px"
+									requiredMessage="Veuillez entrer une quittance valide" />
+								<p:message id="msgNum" for="num" display="icon"/>
+
+							</h:panelGrid></td>
+						<td>
+							<fieldset
+								style="width: 465px; border: 2px solid #93DAFE; border-radius: 6px;">
+								<p:panel header="Options d'edition de pièces"
+									style="margin-bottom:10px" cellpadding="5">
+									<h:selectManyCheckbox id="select" 
+										value=""
+										style="text-align:center" required="true"
+										requiredMessage="Veuillez choisir au moins un etat à éditer">
+										<f:selectItem itemLabel="Conditions particulières"
+										itemValue="conditionsParticulieres" />
+										<f:selectItem itemLabel="Quittance" itemValue="quittance" />
+										
+											
+									</h:selectManyCheckbox>
+									<p:message id="msgSelect" for="select" display="icon"/>
+								</p:panel>
+							</fieldset>
+						</td>
+					</tr>
+				</table>
+				<br />
+				
+				<br></br>
+				<p:commandLink target="_blank"  ajax="fase" type="submit" >Editer</p:commandLink>
+				
+			</h:form>
+		</div>
+	</ui:define>
+
+</ui:composition>
+</html>
