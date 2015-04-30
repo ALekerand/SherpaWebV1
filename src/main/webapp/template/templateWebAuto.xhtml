@@ -14,7 +14,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?sensor=false"
 		type="text/javascript"></script>
 	<!-- <link href="main.css" rel="stylesheet" type="text/css" media="screen" /> -->
-	<link rel="icon" type="image/x-icon" href="../../../resources/images/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="../resources/images/favicon.ico" />
 </h:head>
 
 <h:body>
@@ -23,9 +23,9 @@
 		onsuccess="statusDialog.hide();" />
 
 	<p:dialog modal="true" widgetVar="statusDialog" header="Status"
-		draggable="false" closable="false" appendTo="@(body)"
+		draggable="false" closable="false" 
 		showHeader="false" resizable="false">
-	<h:graphicImage value="../../../../../resources/images/ajax-loader.gif" />
+	<h:graphicImage value="../resources/images/ajax-loader.gif" />
 	</p:dialog>
 	<h:outputStylesheet library="css" name="style.css" />
 	<p:layout fullPage="true">
