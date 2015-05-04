@@ -27,7 +27,7 @@ import com.j3a.sherpawebuser.utilitaire.VehiculeRow;
 public class GarantieMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Inject
-	private ObjectService objectService;
+	ObjectService objectService;
 	private double duree;
 	private Boolean statuRed;
 	private Boolean statuBonus;
