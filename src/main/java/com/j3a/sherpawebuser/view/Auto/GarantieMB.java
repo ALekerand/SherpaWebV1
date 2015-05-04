@@ -9,10 +9,12 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
 
+import com.j3a.sherpawebuser.controller.ObjectService;
 import com.j3a.sherpawebuser.dbEntityClasses.Garantie;
 import com.j3a.sherpawebuser.prime.CalculPrimeGlobale;
 import com.j3a.sherpawebuser.prime.CalculPrimeProrata;
@@ -24,9 +26,9 @@ import com.j3a.sherpawebuser.utilitaire.VehiculeRow;
 
 public class GarantieMB implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	@Inject
+	private ObjectService objectService;
 	private double duree;
-
 	private Boolean statuRed;
 	private Boolean statuBonus;
 	private Boolean statuMalus;
@@ -54,7 +56,7 @@ public class GarantieMB implements Serializable {
 	public List<Garanties> listegarantieAll = new ArrayList<Garanties>();
 
 	public Garanties selectGarantieGroup;
-
+	public String codeRisque;
 	public String mouvement;
 	public Garantie objetGarantie;
 	private List<Garantie> garantiesChoisies;
@@ -655,10 +657,23 @@ public class GarantieMB implements Serializable {
 	public void setMouvement(String mouvement) {
 		this.mouvement = mouvement;
 	}
+	public void cleanChamps(){
+		 reductionAutres=BigDecimal.ZERO;
+		reductionFlote=BigDecimal.ZERO ;
+				reductionPermis=BigDecimal.ZERO;
+				totalReductions=BigDecimal.ZERO;
+				primeNette = BigDecimal.ZERO;
+		 surprimes=BigDecimal.ZERO;
+				 primeProrata=BigDecimal.ZERO;
+				 accessoires = BigDecimal.ZERO;
+		  bonus=BigDecimal.ZERO;
+				   malus=BigDecimal.ZERO;
+		
+	}
 
 	public List<Garantie> getGarantiesList() {
 		GarantiesList = new ArrayList<Garantie>();
-		List<Object> listObject = getObjectService().getObjects("Garantie");
+		List<Garantie> listObject = getObjectService().getGarantieFacade().findAll();
 		for (Iterator it = listObject.iterator(); it.hasNext();) {
 			Garantie garantie = (Garantie) it.next();
 			try {
@@ -1112,6 +1127,22 @@ public class GarantieMB implements Serializable {
 
 	public void setMonString(String monString) {
 		this.monString = monString;
+	}
+
+	public ObjectService getObjectService() {
+		return objectService;
+	}
+
+	public void setObjectService(ObjectService objectService) {
+		this.objectService = objectService;
+	}
+
+	public String getCodeRisque() {
+		return codeRisque;
+	}
+
+	public void setCodeRisque(String codeRisque) {
+		this.codeRisque = codeRisque;
 	}
 
 }

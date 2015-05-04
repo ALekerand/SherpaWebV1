@@ -41,6 +41,7 @@ import com.j3a.sherpawebuser.dbEntityClasses.Conducteur;
 import com.j3a.sherpawebuser.dbEntityClasses.SousCatVehicule;
 import com.j3a.sherpawebuser.dbEntityClasses.Ville;
 import com.j3a.sherpawebuser.utilitaire.VehiculeRow;
+import com.j3a.sherpawebuser.view.IdGenerateur;
 
 /**
  *
@@ -52,6 +53,8 @@ public class CarteGriseMB implements Serializable {
 		private static final long serialVersionUID = 1L;
 		@Inject
 		private ObjectService objectService;
+		@Inject
+		private IdGenerateur idGenerateur;
 		// private static Logger logs=Logger.getLogger(ManagedCarteGrise.class);
 		private VehiculeRow slctdVehiRw = new VehiculeRow();
 		private VehiculeRow slctdVehiRwTb = new VehiculeRow();
@@ -88,7 +91,7 @@ public class CarteGriseMB implements Serializable {
 				date = Calendar.getInstance().getTime();
 
 				VehiculesAssures vehiAss = new VehiculesAssures();
-				vehiAss.setId(getIdGenerateur().getIdVehiAss(Avn.getNumPolice()));
+				vehiAss.setIdVehiculesAssures(getIdGenerateur().getIdVehiAss(Avn.getNumPolice()));
 				Vehicule vehi = new Vehicule();
 
 				if (Avn.getMouvement().equalsIgnoreCase("AFFAIRE NOUVELLE")) {
@@ -121,7 +124,7 @@ public class CarteGriseMB implements Serializable {
 
 					vehi = F.getVehi();
 					// vehi.setId(vehiAss.getId() + "-V" + numOrdVSt);
-					vehi.setId(getIdGenerateur().getIdVehicule(Avn.getNumPolice()));
+					vehi.setCodeVehicule(getIdGenerateur().getIdVehicule(Avn.getNumPolice()));
 					vehi.setIdVehiculesAssures(vehiAss);
 					vehi.setNumImmat(vehi.getNumImmat().toUpperCase());
 					vehi.setNumImmatPrec(vehi.getNumImmatPrec().toUpperCase());
@@ -141,13 +144,13 @@ public class CarteGriseMB implements Serializable {
 					VehiZoneGeo.setVehiculeZoneGeographiquePK(VehiZoneGeoPK);
 					VehiZoneGeo.setDateRouler(date);
 
-					histoPropVehi.setId(getIdGenerateur().getIdHistoPropVehi(
+					histoPropVehi.setCodeHistoVehicule(getIdGenerateur().getIdHistoPropVehi(
 							vehi.getCodeVehicule()));
 					HistoProprietesVehiTool.setProperties(histoPropVehi, vehi);
 					histoPropVehi.setCodeVehicule(vehi);
 					histoPropVehi.setDateHisto(date);
 
-					histoMouvement.setId(getIdGenerateur().getIdHistoMvmt(vehi));
+					histoMouvement.setCodeHistoMouvement(getIdGenerateur().getIdHistoMvmt(vehi));
 					histoMouvement.setCodeVehicule(vehi);
 					histoMouvement.setDateHistoMouvement(Calendar.getInstance()
 							.getTime());
@@ -163,7 +166,7 @@ public class CarteGriseMB implements Serializable {
 					ApporteurVehiPK.setCodeVehicule(vehi.getCodeVehicule());
 					ApporteurVehiPK.setCodeApporteur(F.getApporteur().getCodeApporteur());
 
-					ApporteurVehi.setCodeApporteur(ApporteurVehiPK);
+					ApporteurVehi.setApporteurVehiculePK(ApporteurVehiPK);
 					ApporteurVehi.setDateApporteurVehicule(date);
 					ApporteurVehi
 							.setMontantComApporteur(F.getCommissionApporteur());
@@ -329,7 +332,7 @@ public class CarteGriseMB implements Serializable {
 		public void testidVehicule() {
 			Contrat c = new Contrat();
 			// 001KA1015AUT010
-			c.setId("001KA1015AUT012");
+			c.setNumPolice("001KA1015AUT012");
 			String idVehicule = getIdGenerateur().getIdVehicule(c);
 			System.out.println("id du vehicule:::::::::::" + idVehicule);
 			int idv = new BigDecimal(idVehicule.substring(17)).intValue();
@@ -380,7 +383,7 @@ public class CarteGriseMB implements Serializable {
 					if (F.getStatutVehiculeBD() == false) {
 
 						vehi.setCodeSousCatVehicule(F.getSouCatVehi());
-						vehi.setId(getIdGenerateur().getIdVehicule(
+						vehi.setCodeVehicule(getIdGenerateur().getIdVehicule(
 								avn.getNumPolice()));
 						vehi.setIdVehiculesAssures(avn.getIdVehiculesAssures());
 						VehiculeZoneGeographique VehiZoneGeo = new VehiculeZoneGeographique();
@@ -447,13 +450,13 @@ public class CarteGriseMB implements Serializable {
 					}
 					// ajout des infos supplementaires du vehicule
 
-					histoMouvement.setId(getIdGenerateur().getIdHistoMvmt(vehi));
+					histoMouvement.setCodeHistoMouvement(getIdGenerateur().getIdHistoMvmt(vehi));
 					histoMouvement.setCodeVehicule(vehi);
 					histoMouvement.setDateHistoMouvement(Calendar.getInstance()
 							.getTime());
 					histoMouvement.setIdAvenant(avn.getNumAvenant());
 					histoMouvement.setLibelleHistoMouvement(avn.getMouvement());
-					histoPropVehi.setId(getIdGenerateur().getIdHistoPropVehi(
+					histoPropVehi.setCodeHistoVehicule(getIdGenerateur().getIdHistoPropVehi(
 							vehi.getCodeVehicule()));
 					HistoProprietesVehiTool.setProperties(histoPropVehi, vehi);
 					histoPropVehi.setCodeVehicule(vehi);
@@ -1218,6 +1221,14 @@ public class CarteGriseMB implements Serializable {
 
 		public void setWarnMsg(String warnMsg) {
 			this.warnMsg = warnMsg;
+		}
+
+		public IdGenerateur getIdGenerateur() {
+			return idGenerateur;
+		}
+
+		public void setIdGenerateur(IdGenerateur idGenerateur) {
+			this.idGenerateur = idGenerateur;
 		}
 
 

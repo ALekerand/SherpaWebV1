@@ -40,14 +40,14 @@ public class IdGenerateur implements Serializable {
 	}
 
 	public String getIdVehiAss(Contrat ctrat) {
-		String IdVehiAss = ctrat.getId() + "Va";
+		String IdVehiAss = ctrat.getNumPolice() + "Va";
 		// size=15+2
 		return IdVehiAss;
 	}
 
 	public String getIdVehicule(Contrat ctrat) {
 		// String pseudo = vehiAss.getId().substring(0, 17);
-		String pseudo = ctrat.getId() + "-V";
+		String pseudo = ctrat.getNumPolice() + "-V";
 		// 001KA1014AUT009-V001 = 17+3
 		String IdVehi = getObjectService().getCodeTable(pseudo, 17, 3,
 				"vehicule", "CODE_VEHICULE");
@@ -59,22 +59,22 @@ public class IdGenerateur implements Serializable {
 		// histoMvmt = idVehi(20)+"-Hmv"(4)+numOrd(3)=27
 		// 001KA1015AUT013-V001-Hmv001
 
-		String pseudo = vehi.getId() + "-Hmv";
+		String pseudo = vehi.getCodeVehicule() + "-Hmv";
 		String IdHistoMvmt = "";
 
-		if (vehi.getId().length() == 26) {
+		if (vehi.getCodeVehicule().length() == 26) {
 			// idVehi= 001KA1015AUT011-Av01Va-V01
 			// histoMvmt = idVehi(26)+"-Hmv"(4)+numOrd(3)=33
 			IdHistoMvmt = getObjectService().getCodeTable(pseudo, 30, 3,
 					"histo_mouvement", "CODE_HISTO_MOUVEMENT");
 		}
 
-		if (vehi.getId().length() == 21) {
+		if (vehi.getCodeVehicule().length() == 21) {
 			// idVehi= 001KA1014AUT004Va-V01(21)+"-Hmv"(4)+numOrd(3)=28
 			IdHistoMvmt = getObjectService().getCodeTable(pseudo, 25, 3,
 					"histo_mouvement", "CODE_HISTO_MOUVEMENT");
 		}
-		if (vehi.getId().length() == 20) {
+		if (vehi.getCodeVehicule().length() == 20) {
 			// idVehi= 001KA1015AUT015-V001
 			// histoMvmt = idVehi(20)+"-Hmv"(4)+numOrd(3)=27
 			IdHistoMvmt = getObjectService().getCodeTable(pseudo, 24, 3,
@@ -127,11 +127,11 @@ public class IdGenerateur implements Serializable {
 	
 
 	public String getIdGarChoisieAuto(Vehicule vehi) {
-		String pseudo = vehi.getId() + "GA";
+		String pseudo = vehi.getCodeVehicule() + "GA";
 		String IdGarchoi = getObjectService().getCodeTable(pseudo, 28, 2,
 				"garantie_choisie", "CODE_GARANTIE_CHOISIE");
 		System.out.println("****Id de la GarantieChoisie du vehicule "
-				+ vehi.getId() + "=" + IdGarchoi);
+				+ vehi.getCodeVehicule() + "=" + IdGarchoi);
 		return IdGarchoi;
 	}
 
@@ -140,7 +140,7 @@ public class IdGenerateur implements Serializable {
 	
 
 	public String getIdReglement(Quittance quittance) {
-		String pseudo = quittance.getId() + "-R";
+		String pseudo = quittance.getCodeQuittance() + "-R";
 		String idReg = getObjectService().getCodeTable(pseudo, 25, 2,
 				"reglement", "CODE_REGLEMENT");
 		return idReg;
@@ -149,10 +149,18 @@ public class IdGenerateur implements Serializable {
 
 
 	public String getIdContact(Personne personne) {
-		String pseudo = personne.getId() + "-C";
+		String pseudo = personne.getNumSouscripteur() + "-C";
 		String idReg = getObjectService().getCodeTable(pseudo, 11, 2,
 				"contact", "ID_CONTACT");
 		return idReg;
+	}
+
+	public ObjectService getObjectService() {
+		return objectService;
+	}
+
+	public void setObjectService(ObjectService objectService) {
+		this.objectService = objectService;
 	}
 
 
