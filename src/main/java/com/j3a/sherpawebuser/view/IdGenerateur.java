@@ -3,12 +3,16 @@ package com.j3a.sherpawebuser.view;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import javax.enterprise.context.Dependent;
+import javax.inject.Named;
+
 import com.j3a.sherpawebuser.controller.ObjectService;
 import com.j3a.sherpawebuser.dbEntityClasses.Contrat;
 import com.j3a.sherpawebuser.dbEntityClasses.Personne;
 import com.j3a.sherpawebuser.dbEntityClasses.Quittance;
 import com.j3a.sherpawebuser.dbEntityClasses.Vehicule;
-
+@Named
+@Dependent
 public class IdGenerateur implements Serializable {
 	/**
 	 * 
