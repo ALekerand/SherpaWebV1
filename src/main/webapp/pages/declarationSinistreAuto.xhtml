@@ -11,54 +11,47 @@
 
 <ui:composition template="/template/templateWebAuto.xhtml">
 	<ui:define name="content">
-	<p:wizard flowListener="#{userWizard.onFlowProcess}">
-        <p:tab id="personal" title="Caracteristique du sinistre">
-            <p:panel header="Caracteristique du sinistre">
-             
-
+	
+	<p:wizard flowListener="#{declarationSinistre.declarationSinistreControler.onFlowProcess}">
+        <p:tab id="personal" title="Personal">
+            <p:panel header="Personal Details">
+                <p:messages />
+                <h:panelGrid columns="2" columnClasses="label, value">
+                    <h:outputText value="Firstname: *" />
+                    <p:inputText value="#{userWizard.user.firstname}" required="true" label="Firstname"/>
+ 
+                    <h:outputText value="Lastname: *" />
+                    <p:inputText value="#{userWizard.user.lastname}" required="true" label="Lastname"/>
+ 
+                    <h:outputText value="Age: " />
+                    <p:inputText value="#{userWizard.user.age}" />
+ 
+                    <h:outputText value="Skip to last: " />
+                    <h:selectBooleanCheckbox value="#{userWizard.skip}" />
+                </h:panelGrid>
+            </p:panel>
+        </p:tab>
+	
+    <p:panel header="Caracteristique du sinistre">
 	<fieldset class="fieldset" style="width:1060px; background:#e5e5e5; border-bottom-color:#3a76e2" >
 	<h:panelGrid id="infoGrid" columns="4">
 		<p:outputLabel for="nom" value="Nom"/>
-		<p:inputText id="nom" value=" "  />
+		<p:inputText id="nom" value=" " required="true"/>
 		
-		<p:outputLabel value="Prenoms"  style="margin-left: 15px;"/>
-		<p:inputText value=" " readonly="true"/>
+		<p:outputLabel for="preno" value="Prenoms"  style="margin-left: 15px;"/>
+		<p:inputText id="preno" value=" " required="true"/>
 	
-		<p:outputLabel value="Police"  style="margin-left: 15px;"/>
-		<p:inputText value="#{declarationSinistre.declarationSinistreControler.monContrat.numPolice} "/>
+		<p:outputLabel for="police" value="Police"/>
+		<p:inputText id="police" value="#{declarationSinistre.declarationSinistreControler.monContrat.numPolice}"/>
 		
 		<p:outputLabel for="mail" value="E-mail"  style="margin-left: 15px;"/>
-		<p:inputText id="mail" value=" " readonly="true"/>
+		<p:inputText id="mail" value=" " required="true"/>
 		
-		<h:outputLabel for="teleph" value="Téléphone"  style="margin-left: 15px;"/>
-		<p:inputText id="teleph "/>
 	</h:panelGrid>
 	</fieldset>
-            </p:panel>
-        </p:tab>
- 
-        <p:tab id="address" title="Type de sinistre">
-            <p:panel header="Type de sinistre">
-                
-            </p:panel>
-        </p:tab>
- 
-        <p:tab id="contact" title="Nature de l'évènement">
-            <p:panel header="Nature de l'évènement">
-                
-            </p:panel>
-        </p:tab>
- 
-        <p:tab id="confirm" title="Mise en relation">
-            <p:panel header="Mise en relation">
-                
-            </p:panel>
-        </p:tab>
-    </p:wizard>
-	
-	
-	
-		
+    </p:panel>
+</p:wizard>
+
 	</ui:define>
 </ui:composition>
 </html>
