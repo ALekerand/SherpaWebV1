@@ -5,33 +5,42 @@
  */
 package com.j3a.sherpawebuser.view;
 
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import com.j3a.sherpawebuser.controller.interfaces.Flow_XXX_Interface;
 import com.j3a.sherpawebuser.dbEntityClasses.Avenant;
-import java.util.Calendar;
-import java.util.Date;
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
 
 /**
- *
+ *	
  * @author J3A-AFRIQUE
  */
-@Named
-@Dependent
-public class TestMB {
+@Named 
+@ViewScoped
+public class TestMB implements Serializable {
 
-    @Inject
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Inject
     private Flow_XXX_Interface flowInterf;
     /**
      * Creates a new instance of NewJSFManagedBean
      */
     public TestMB() {
     }
+    
     private Date dateAt;
-    private Avenant aven;
+    private Avenant aven = new Avenant("XXXXXX");
+    private String test = "XXXXXXXX";
     
     public void listAven(){
+    	System.out.println(aven.getNumAvenant());
         setAven(flowInterf.getAvenantAt(getDateAt())) ;
     }
 
@@ -43,7 +52,13 @@ public class TestMB {
     
     
     
-    public Date getDateAt() {
+    public String getTest() {
+		return test;
+	}
+	public void setTest(String test) {
+		this.test = test;
+	}
+	public Date getDateAt() {
         return dateAt;
     }
 
