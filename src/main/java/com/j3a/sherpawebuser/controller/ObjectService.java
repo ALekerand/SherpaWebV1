@@ -23,13 +23,14 @@ import com.j3a.sherpawebuser.entityClassesSessionBeans.GarantieGarantieChoisieFa
 import com.j3a.sherpawebuser.entityClassesSessionBeans.HistoMouvementFacade;
 import com.j3a.sherpawebuser.entityClassesSessionBeans.HistoProprietesVehiculeFacade;
 import com.j3a.sherpawebuser.entityClassesSessionBeans.QuittanceFacade;
+import com.j3a.sherpawebuser.entityClassesSessionBeans.SousCatVehiculeFacade;
 import com.j3a.sherpawebuser.entityClassesSessionBeans.VehiculeFacade;
 import com.j3a.sherpawebuser.entityClassesSessionBeans.VehiculeZoneGeographiqueFacade;
 import com.j3a.sherpawebuser.entityClassesSessionBeans.VehiculesAssuresFacade;
+import com.j3a.sherpawebuser.entityClassesSessionBeans.VilleFacade;
 
 @Named
 @Dependent
-@Stateless
 public class ObjectService {
 	 @PersistenceContext(unitName = "com.j3a_SherpaWebUser_war_1.0-SNAPSHOTPU")
 	    private EntityManager em;
@@ -58,18 +59,25 @@ public class ObjectService {
 	    private HistoMouvementFacade histoMouvementFacade;
 	  @EJB
 	  private HistoProprietesVehiculeFacade histoProprietesVehiculeFacade;
-	  @EJB
+	  
+	  @EJB(lookup="java:global/SherpaWebUser/ContratFacade!com.j3a.sherpawebuser.entityClassesSessionBeans.ContratFacadeLocal")
 	  private ContratFacade contratFacade;
 	  @EJB
 	  private QuittanceFacade quittanceFacade;
 	  @EJB
 	    private VehiculeZoneGeographiqueFacade vehiculeZoneGeographiqueFacade;
 	  @EJB
-	  private ApporteurVehiculeFacade apporteurVehiculeFacade;*/
+
 	  
-	  
-	  
-	
+	  /* private ActeMedicalFacade lookupActeMedicalFacadeBean() {
+	        try {
+	            Context c = new InitialContext();
+	            return (ActeMedicalFacade) c.lookup("java:global/FeedZeusBdChain/ActeMedicalFacade!EntityClassesSB.ActeMedicalFacade");
+	        } catch (NamingException ne) {
+	            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+	            throw new RuntimeException(ne);
+	        }*/
+	  //  }
 	  public String getCodeTable(String pseudo, int taillCar, int taillChifr,
 				String nomTable, String nomCOL) {
 			// Methode crï¿½ation d'un id code alphanumrique chronologique d'une
@@ -234,7 +242,23 @@ public class ObjectService {
 
 		public void setGarantieFacade(GarantieFacade garantieFacade) {
 			this.garantieFacade = garantieFacade;
-		}*/
+		}
 
-   
+		public SousCatVehiculeFacade getSousCatVehiculeFacade() {
+			return sousCatVehiculeFacade;
+		}
+
+		public void setSousCatVehiculeFacade(SousCatVehiculeFacade sousCatVehiculeFacade) {
+			this.sousCatVehiculeFacade = sousCatVehiculeFacade;
+		}
+
+		public VilleFacade getVilleFacade() {
+			return villeFacade;
+		}
+
+		public void setVilleFacade(VilleFacade villeFacade) {
+			this.villeFacade = villeFacade;
+		}
+
+   */
 }
