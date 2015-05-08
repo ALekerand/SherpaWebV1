@@ -12,6 +12,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.j3a.sherpawebuser.controller.Flow_XXX_Controls;
 import com.j3a.sherpawebuser.controller.interfaces.Flow_XXX_Interface;
 import com.j3a.sherpawebuser.dbEntityClasses.Avenant;
 
@@ -27,6 +28,7 @@ public class TestMB implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Inject
     private Flow_XXX_Interface flowInterf;
     /**

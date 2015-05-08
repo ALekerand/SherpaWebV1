@@ -5,14 +5,17 @@
  */
 package com.j3a.sherpawebuser.controller;
 
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
+import javax.enterprise.context.Dependent;
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import com.j3a.sherpawebuser.controller.interfaces.Flow_XXX_Interface;
 import com.j3a.sherpawebuser.dbEntityClasses.Avenant;
 import com.j3a.sherpawebuser.entityClassesSessionBeans.AvenantFacadeLocal;
-import java.util.Date;
-import java.util.List;
-import javax.ejb.EJB;
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 
 /**
  *
@@ -20,8 +23,12 @@ import javax.enterprise.context.Dependent;
  */
 @Named
 @Dependent
-public class Flow_XXX_Controls implements Flow_XXX_Interface{
-    @EJB
+public class Flow_XXX_Controls implements Flow_XXX_Interface, Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Inject
     private AvenantFacadeLocal avenantFacade;
 
     /**

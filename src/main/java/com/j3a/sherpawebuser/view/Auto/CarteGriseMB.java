@@ -48,7 +48,7 @@ import com.j3a.sherpawebuser.view.IdGenerateur;
 @Named
 @Dependent
 public class CarteGriseMB implements Serializable {
-		private static final long serialVersionUID = 1L;
+		/*private static final long serialVersionUID = 1L;
 		@Inject
 		private ObjectService objectService;
 		@Inject
@@ -266,7 +266,7 @@ public class CarteGriseMB implements Serializable {
 						primeNetteAnnuelle = primeNetteAnnuelle.add(GC
 								.getPrimeNetteAnnuelle());
 						red = red.add(GC.getMontantReduction());
-						/*
+						
 						 * com =
 						 * com.add(GC.getTauxCom().multiply(prime).divide(BigDecimal
 						 * .valueOf(100))); con =
@@ -277,7 +277,7 @@ public class CarteGriseMB implements Serializable {
 						 * .valueOf(100))); ges =
 						 * ges.add(GC.getTauxGesIa().multiply(
 						 * prime).divide(BigDecimal.valueOf(100)));
-						 */
+						 
 						// coass = coass+GT.getT*prime/100;
 						taxe = taxe.add(prime.divide(BigDecimal.valueOf(0.03), 2));
 					}
@@ -360,10 +360,10 @@ public class CarteGriseMB implements Serializable {
 				// date = Calendar.getInstance().getTime();
 
 				// VehiculesAssures vehiAss = new VehiculesAssures();
-				/*
+				
 				 * vehiAss.setId(getIdGenerateur().getIdVehiAss(avn));
 				 * avn.setIdVehiculesAssures(vehiAss);
-				 */
+				 
 				// Vehicule vehi = new Vehicule();
 
 				getObjectService().getAvenantFacade().create(avn);
@@ -529,7 +529,7 @@ public class CarteGriseMB implements Serializable {
 						primeNetteAnnuelle = primeNetteAnnuelle.add(GC
 								.getPrimeNetteAnnuelle());
 						red = red.add(GC.getMontantReduction());
-						/*
+						
 						 * com =
 						 * com.add(GC.getTauxCom().multiply(prime).divide(BigDecimal
 						 * .valueOf(100))); con =
@@ -540,7 +540,7 @@ public class CarteGriseMB implements Serializable {
 						 * .valueOf(100))); ges =
 						 * ges.add(GC.getTauxGesIa().multiply(
 						 * prime).divide(BigDecimal.valueOf(100)));
-						 */
+						 
 						// coass = coass+GT.getT*prime/100;
 						taxe = taxe.add(prime.divide(BigDecimal.valueOf(0.03), 2));
 					}
@@ -917,7 +917,7 @@ public class CarteGriseMB implements Serializable {
 				inputPr.setRequired(false);
 				inputCu.setRequired(false);
 			}
-			/*if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT4")) {
+			if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT4")) {
 				inputPr.setDisabled(true);
 				inputPf.setDisabled(true);
 				inputPlcCab.setDisabled(false);
@@ -932,7 +932,7 @@ public class CarteGriseMB implements Serializable {
 				inputPf.setRequired(false);
 				inputPr.setRequired(false);
 				inputCu.setRequired(false);
-			}*/
+			}
 			if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT5")) {
 				inputPr.setDisabled(false);
 				inputPf.setDisabled(true);
@@ -1229,5 +1229,5 @@ public class CarteGriseMB implements Serializable {
 			this.idGenerateur = idGenerateur;
 		}
 
-
+*/
 }

@@ -39,6 +39,7 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
+                <h:form id="gnl">
                     Welcome to PrimeFaces Test
                     <h:outputText value="date d'Emission"/>
                     <p:inputMask
@@ -49,9 +50,11 @@
                         <f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
                     </p:inputMask>
                     <p:commandButton  value="OK" action="#{testMB.listAven}" 
-                                      icon="ui-icon-search"/>
+                                      icon="ui-icon-search" update=":gnl:text"/>
                     
-                    <h:outputText value="#{testMB.test}"/>
+                    <h:outputText id="text" value="#{testMB.aven.numAvenant}"/>
+                    
+                  </h:form>
                 </p:layoutUnit>
 
             </p:layout>

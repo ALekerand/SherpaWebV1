@@ -38,7 +38,7 @@ public class ObjectService {
 	    protected EntityManager getEntityManager() {
 	        return em;
 	    }
-	 @EJB
+	 /*@EJB
 	    private AvenantFacadeLocal avenantFacade;
 	  @EJB
 	    private ConducteurFacade conducteurFacade;
@@ -65,7 +65,7 @@ public class ObjectService {
 	  @EJB
 	    private VehiculeZoneGeographiqueFacade vehiculeZoneGeographiqueFacade;
 	  @EJB
-	  private ApporteurVehiculeFacade apporteurVehiculeFacade;
+	  private ApporteurVehiculeFacade apporteurVehiculeFacade;*/
 	  
 	  
 	  
@@ -118,7 +118,7 @@ public class ObjectService {
 		}
 	  
 
-	  public GarantieGarantieChoisieFacade getGarantieGarantieChoisieFacade() {
+	 /* public GarantieGarantieChoisieFacade getGarantieGarantieChoisieFacade() {
 			return garantieGarantieChoisieFacade;
 		}
 
@@ -234,7 +234,7 @@ public class ObjectService {
 
 		public void setGarantieFacade(GarantieFacade garantieFacade) {
 			this.garantieFacade = garantieFacade;
-		}
+		}*/
 
    
 }

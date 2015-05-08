@@ -673,15 +673,15 @@ public class GarantieMB implements Serializable {
 
 	public List<Garantie> getGarantiesList() {
 		GarantiesList = new ArrayList<Garantie>();
-		List<Garantie> listObject = getObjectService().getGarantieFacade().findAll();
-		for (Iterator it = listObject.iterator(); it.hasNext();) {
+	//	List<Garantie> listObject = getObjectService().getGarantieFacade().findAll();
+		/*for (Iterator it = listObject.iterator(); it.hasNext();) {
 			Garantie garantie = (Garantie) it.next();
 			try {
 				GarantiesList.add(garantie);
 			} catch (Exception e) {
 			}
 
-		}
+		}*/
 		return GarantiesList;
 	}
 

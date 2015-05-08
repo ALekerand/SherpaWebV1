@@ -6,12 +6,16 @@
 package com.j3a.sherpawebuser.controller.interfaces;
 
 import com.j3a.sherpawebuser.dbEntityClasses.Avenant;
+
 import java.util.Date;
+
+import javax.inject.Named;
 
 /**
  *
  * @author J3A-AFRIQUE
  */
+
 public interface Flow_XXX_Interface {
 
     public Avenant getAvenantAt(Date d);
